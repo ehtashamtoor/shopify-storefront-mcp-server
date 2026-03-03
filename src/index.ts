@@ -34,9 +34,15 @@ const SHOPIFY_CUSTOMER_ACCESS_TOKEN =
   argv.customerAccessToken || process.env.SHOPIFY_CUSTOMER_ACCESS_TOKEN;
 
 // Store in process.env for backwards compatibility
-process.env.SHOPIFY_STOREFRONT_ACCESS_TOKEN = SHOPIFY_STOREFRONT_ACCESS_TOKEN;
-process.env.SHOPIFY_STORE_DOMAIN = SHOPIFY_STORE_DOMAIN;
-process.env.SHOPIFY_CUSTOMER_ACCESS_TOKEN = SHOPIFY_CUSTOMER_ACCESS_TOKEN;
+if (SHOPIFY_STOREFRONT_ACCESS_TOKEN) {
+  process.env.SHOPIFY_STOREFRONT_ACCESS_TOKEN = SHOPIFY_STOREFRONT_ACCESS_TOKEN;
+}
+if (SHOPIFY_STORE_DOMAIN) {
+  process.env.SHOPIFY_STORE_DOMAIN = SHOPIFY_STORE_DOMAIN;
+}
+if (SHOPIFY_CUSTOMER_ACCESS_TOKEN) {
+  process.env.SHOPIFY_CUSTOMER_ACCESS_TOKEN = SHOPIFY_CUSTOMER_ACCESS_TOKEN;
+}
 
 // Validate required environment variables
 // Note: Storefront access token is optional for tokenless access to products, collections, search, and carts

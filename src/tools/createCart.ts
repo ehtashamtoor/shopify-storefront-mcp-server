@@ -50,9 +50,11 @@ export async function execute(
   client: GraphQLClient
 ): Promise<any> {
   // Determine customer access token - parameter takes precedence over environment
-  const customerAccessToken = input.customerAccessToken || 
-    input.buyerIdentity?.customerAccessToken || 
-    process.env.SHOPIFY_CUSTOMER_ACCESS_TOKEN;
+  const customerAccessToken =
+    input.customerAccessToken ||
+    input.buyerIdentity?.customerAccessToken ||
+    process.env.SHOPIFY_CUSTOMER_ACCESS_TOKEN ||
+    undefined;
 
   const query = `
     mutation CartCreate($input: CartInput!) {
